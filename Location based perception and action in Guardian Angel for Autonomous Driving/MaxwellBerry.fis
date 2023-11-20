@@ -1,0 +1,56 @@
+[System]
+Name='MaxwellBerry'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='distance'
+Range=[-100 0]
+NumMFs=2
+MF1='close':'MFS',[-10 20 1]
+MF2='far':'MFS',[-30 15 -1]
+
+[Input2]
+Name='brakingForce'
+Range=[0 200]
+NumMFs=3
+MF1='low':'MFS',[49.6 7.28 -1]
+MF2='medium':'MFGauss',[74.2 9.8]
+MF3='hard':'MFS',[95 4.78 1]
+
+[Input3]
+Name='roadCondition'
+Range=[-100 100]
+NumMFs=2
+MF1='poor':'MFS',[0 15 -1]
+MF2='normal':'MFS',[15 20 1]
+
+[Output1]
+Name='carBDecelaration'
+Range=[-200 0]
+NumMFs=3
+MF1='fast':'zmf',[-200 -150]
+MF2='medium':'gaussmf',[29.82 -150.4]
+MF3='slow':'smf',[-105 -50]
+
+[Rules]
+1 1 1, 2 (1) : 1
+1 1 2, 3 (1) : 1
+1 2 1, 1 (1) : 1
+1 2 2, 2 (1) : 1
+1 3 1, 1 (1) : 1
+1 3 2, 1 (1) : 1
+2 1 1, 3 (1) : 1
+2 1 2, 3 (1) : 1
+2 2 1, 2 (1) : 1
+2 2 2, 3 (1) : 1
+2 3 1, 1 (1) : 1
+2 3 2, 2 (1) : 1
