@@ -36,10 +36,12 @@ function [switchToHuman, timeOfSwitch] = AdvisoryControl(vA, sAB)
             disp("Switch to Human : " + switchToHuman + " | Time : " + timeOfSwitch);
             break;
         else
-
+            
             if (i == length(vA)-1)
+            
                 switchToHuman = false;
-                disp("Switch to Human : " + switchToHuman + " | Time : N/A");
+                timeOfSwitch = "N/A";
+                disp("Switch to Human : " + switchToHuman + " | Time : " + timeOfSwitch);
             end
         end
     end
